@@ -1,0 +1,30 @@
+{
+  "name": "lambda-layer-util-dynamodb",
+  "version": "1.0.0",
+  "description": "lambda-layer-util-dynamodb",
+  "main": "index.js",
+  "scripts": {
+    "commit": "npx git-cz",
+    "sam:deploy:live": "sam build --config-env prod && sam deploy --config-env prod",
+    "sam:deploy:dev": "sam build --config-env dev && sam deploy --config-env dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indramdhani/lambda-layer-util-dynamodb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indramdhani/lambda-layer-util-dynamodb/issues"
+  },
+  "homepage": "https://github.com/indramdhani/lambda-layer-util-dynamodb#readme",
+  "devDependencies": {
+    "commitizen": "^4.2.4",
+    "git-cz": "^4.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}

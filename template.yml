@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  lambda layer for util dynamodb
+
+Transform:
+  - AWS::Serverless-2016-10-31
+
+Parameters:
+  StackEnvironment:
+    Type: String
+    Default: local
+    AllowedValues:
+      - prod
+      - dev
+      - local
+Mappings:
+  VarPerStack:
+    prod:
+      'Name': 'util-dynamodb'
+    dev:
+      'Name': 'util-dynamodb-dev'
+    local:
+      'Name': 'util-dynamodb-local'
+
+Resources:
+  DynamoDbClientLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: !FindInMap [VarPerStack, !Ref 'StackEnvironment', Name]
+      Description: lambda layer contains util dynamodb package
+      CompatibleArchitectures:
+        - arm64
+        - x86_64
+      CompatibleRuntimes:
+        - nodejs14.x
+        - nodejs12.x
+      ContentUri: ./layer
+      RetentionPolicy: Retain
+      LicenseInfo: MIT
