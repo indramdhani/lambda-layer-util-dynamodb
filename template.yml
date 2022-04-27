@@ -23,7 +23,7 @@ Mappings:
       'Name': 'util-dynamodb-local'
 
 Resources:
-  DynamoDbClientLayer:
+  DynamoDbUtilLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: !FindInMap [VarPerStack, !Ref 'StackEnvironment', Name]
@@ -37,3 +37,8 @@ Resources:
       ContentUri: ./layer
       RetentionPolicy: Retain
       LicenseInfo: MIT
+
+Outputs:
+  Layer:
+    Description: 'Layer Arn'
+    Value: !Ref DynamoDbUtilLayer
