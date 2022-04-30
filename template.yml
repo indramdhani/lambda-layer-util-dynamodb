@@ -6,7 +6,7 @@ Transform:
   - AWS::Serverless-2016-10-31
 
 Parameters:
-  StackEnvironment:
+  Environment:
     Type: String
     Default: local
     AllowedValues:
@@ -26,7 +26,7 @@ Resources:
   DynamoDbUtilLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      LayerName: !FindInMap [VarPerStack, !Ref 'StackEnvironment', Name]
+      LayerName: !FindInMap [VarPerStack, !Ref 'Environment', Name]
       Description: lambda layer contains util dynamodb package
       CompatibleArchitectures:
         - arm64
